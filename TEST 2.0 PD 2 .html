@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบันทึกข้อมูลรายงานแผนกผลิต 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-primary': '#1a1a2e',
+                        'dark-secondary': '#16213e',
+                        'dark-accent': '#0f3460',
+                        'gold-accent': '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Sarabun', sans-serif; }
+        .form-container { max-height: 80vh; overflow-y: auto; }
+        .form-container::-webkit-scrollbar { width: 8px; }
+        .form-container::-webkit-scrollbar-track { background: #16213e; }
+        .form-container::-webkit-scrollbar-thumb { background: #0f3460; border-radius: 4px; }
+        .form-container::-webkit-scrollbar-thumb:hover { background: #e94560; }
+    </style>
+</head>
+<body class="bg-dark-primary text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gold-accent mb-2">ระบบบันทึกข้อมูลรายงานแผนกผลิต 2</h1>
+        </div>
+
+        <!-- Form Container -->
+        <div class="bg-dark-secondary rounded-xl shadow-2xl p-8 form-container">
+            <form id="productionForm">
+                <div id="dataEntries">
+                    <!-- Initial Data Entry -->
+                    <div class="data-entry bg-dark-accent rounded-lg p-6 mb-6 border border-gray-600">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-semibold text-gold-accent">ชุดข้อมูลที่ 1</h3>
+                            <button type="button" class="remove-entry bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm transition-colors duration-200" onclick="removeEntry(this)" style="display: none;">ลบ</button>
+                        </div>
+
+                        <!-- Row 1: Date and Machine -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">วันที่</label>
+                                <input type="date" name="date" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">เครื่องทอ NO</label>
+                                <select name="machine" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200">
+                                    <option value="">เลือกเครื่องทอ</option>
+                                    <option value="CL1">CL1</option>
+                                    <option value="CL2">CL2</option>
+                                    <option value="CL3">CL3</option>
+                                    <option value="CL4">CL4</option>
+                                    <option value="CL5">CL5</option>
+                                    <option value="CL6">CL6</option>
+                                    <option value="CL7">CL7</option>
+                                    <option value="CL8">CL8</option>
+                                    <option value="CL9">CL9</option>
+                                    <option value="CL12">CL12</option>
+                                    <option value="CL13">CL13</option>
+                                    <option value="CL14">CL14</option>
+                                    <option value="CL15">CL15</option>
+                                    <option value="CL16">CL16</option>
+                                    <option value="CL17">CL17</option>
+                                    <option value="CL19">CL19</option>
+                                    <option value="CL25">CL25</option>
+                                    <option value="CL26">CL26</option>
+                                    <option value="CL27">CL27</option>
+                                    <option value="CL28">CL28</option>
+                                    <option value="CL29">CL29</option>
+                                    <option value="CL30">CL30</option>
+                                    <option value="CL31">CL31</option>
+                                    <option value="CL32">CL32</option>
+                                    <option value="CL33">CL33</option>
+                                    <option value="CL34">CL34</option>
+                                    <option value="CL35">CL35</option>
+                                    <option value="CL36">CL36</option>
+                                    <option value="CL44">CL44</option>
+                                    <option value="CL45">CL45</option>
+                                    <option value="CL46">CL46</option>
+                                    <option value="CL47">CL47</option>
+                                    <option value="CL48">CL48</option>
+                                    <option value="CL49">CL49</option>
+                                    <option value="CL50">CL50</option>
+                                    <option value="CL51">CL51</option>
+                                    <option value="CL52">CL52</option>
+                                    <option value="CL53">CL53</option>
+                                    <option value="CL54">CL54</option>
+                                    <option value="CL55">CL55</option>
+                                    <option value="CL56">CL56</option>
+                                    <option value="CL57">CL57</option>
+                                    <option value="CL58">CL58</option>
+                                    <option value="CL59">CL59</option>
+                                    <option value="CL60">CL60</option>
+                                    <option value="CL61">CL61</option>
+                                    <option value="CL62">CL62</option>
+                                    <option value="CL63">CL63</option>
+                                    <option value="CL64">CL64</option>
+                                    <option value="CL65">CL65</option>
+                                    <option value="CL66">CL66</option>
+                                    <option value="CL67">CL67</option>
+                                    <option value="CL68">CL68</option>
+                                    <option value="CL69">CL69</option>
+                                    <option value="CL70">CL70</option>
+                                    <option value="CL71">CL71</option>
+                                    <option value="CL72">CL72</option>
+                                    <option value="CL73">CL73</option>
+                                    <option value="CL74">CL74</option>
+                                    <option value="CL75">CL75</option>
+                                    <option value="CL76">CL76</option>
+                                    <option value="CL77">CL77</option>
+                                    <option value="CL78">CL78</option>
+                                    <option value="CL79">CL79</option>
+                                    <option value="CL80">CL80</option>
+                                    <option value="CL81">CL81</option>
+                                    <option value="CL82">CL82</option>
+                                    <option value="CL83">CL83</option>
+                                    <option value="CL84">CL84</option>
+                                    <option value="CL85">CL85</option>
+                                    <option value="CL86">CL86</option>
+                                    <option value="CL87">CL87</option>
+                                    <option value="CL88">CL88</option>
+                                    <option value="CL89">CL89</option>
+                                    <option value="CL90">CL90</option>
+                                    <option value="CL91">CL91</option>
+                                    <option value="CL92">CL92</option>
+                                    <option value="CL93">CL93</option>
+                                    <option value="CL94">CL94</option>
+                                    <option value="CL95">CL95</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Employee Shifts -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ชื่อพนักงานทอ กะ A</label>
+                                <div class="relative">
+                                    <select name="employeeA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" onchange="handleEmployeeAChange(this)">
+                                        <option value="">เลือกพนักงาน</option>
+                                        <option value="ZP9060">ZP9060 - นางสาว อังคณา บุญธรรม</option>
+                                        <option value="ZP91042">ZP91042 - นาย วัน ชัย</option>
+                                        <option value="ZP91385">ZP91385 - นางสาวรัฐนันท์ นิธากรณ์</option>
+                                        <option value="ZP91512">ZP91512 - นาง นัน มา เล ยี</option>
+                                        <option value="ZP91569">ZP91569 - นาย วัชชระ ชะฎาดำ</option>
+                                        <option value="ZP91680">ZP91680 - นาง ติน ซุย</option>
+                                        <option value="ZP91702">ZP91702 - นาย พิว ไว จอ</option>
+                                        <option value="ZP91718">ZP91718 - นาย หม่อง ซอ</option>
+                                        <option value="ZP91719">ZP91719 - นาย พี พิว ออง</option>
+                                        <option value="ZP91720">ZP91720 - นาง จูจู ซาน</option>
+                                        <option value="ZP9174">ZP9174 - นาง รัดดา ศรีทอง</option>
+                                        <option value="ZP91922">ZP91922 - นาย เพีย โซ อู</option>
+                                        <option value="ZP92107">ZP92107 - จี ปิยประภากุล</option>
+                                        <option value="ZP92186">ZP92186 - นาย ซามินอู</option>
+                                        <option value="ZP92187">ZP92187 - นางสาว ตินโมแท็ด</option>
+                                        <option value="ZP92237">ZP92237 - นาย ซอพูยาซา</option>
+                                        <option value="ZP92250">ZP92250 - นางสาว ยุน วาติ</option>
+                                        <option value="ZP92282">ZP92282 - นาย ปา ลา มอน</option>
+                                        <option value="ZP92285">ZP92285 - นายตาน ซิน ออง</option>
+                                        <option value="ZP92286">ZP92286 - น.ส.ซิก เค่น</option>
+                                        <option value="ZP92317">ZP92317 - นาย ยาน ลิน ออง</option>
+                                        <option value="ZP92318">ZP92318 - น.ส.คินวิน</option>
+                                        <option value="ZP92321">ZP92321 - น.ส.มะ ซู ซู เย</option>
+                                        <option value="ZP92350">ZP92350 - นางสาว ซิน มา ลวิน</option>
+                                        <option value="ZP92402">ZP92402 - นาย ลา วิน</option>
+                                        <option value="ZP92425">ZP92425 - น.ส.วิ</option>
+                                        <option value="ZP92434">ZP92434 - น.ส.ลำใย ใจซื่อ</option>
+                                        <option value="ZP92471">ZP92471 - นางมอว มอว วิน</option>
+                                        <option value="ZP92481">ZP92481 - นางสาว ติ่น ซา</option>
+                                        <option value="ZP92491">ZP92491 - นางมาทา ซิน มน</option>
+                                        <option value="ZP92495">ZP92495 - นางสาว พรสวรรค์</option>
+                                        <option value="ZP9499">ZP9499 - นาง จำรัศ ไทรชมภู</option>
+                                        <option value="custom">🖊️ คีย์ข้อมูลใหม่</option>
+                                    </select>
+                                    <input type="text" name="employeeACustom" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200 mt-2" placeholder="กรอกชื่อพนักงาน กะ A" style="display: none;">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ชื่อพนักงานทอ กะ B</label>
+                                <div class="relative">
+                                    <select name="employeeB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" onchange="handleEmployeeBChange(this)">
+                                        <option value="">เลือกพนักงาน</option>
+                                        <option value="ZP9060">ZP9060 - นางสาว อังคณา บุญธรรม</option>
+                                        <option value="ZP91042">ZP91042 - นาย วัน ชัย</option>
+                                        <option value="ZP91385">ZP91385 - นางสาวรัฐนันท์ นิธากรณ์</option>
+                                        <option value="ZP91512">ZP91512 - นาง นัน มา เล ยี</option>
+                                        <option value="ZP91569">ZP91569 - นาย วัชชระ ชะฎาดำ</option>
+                                        <option value="ZP91680">ZP91680 - นาง ติน ซุย</option>
+                                        <option value="ZP91702">ZP91702 - นาย พิว ไว จอ</option>
+                                        <option value="ZP91718">ZP91718 - นาย หม่อง ซอ</option>
+                                        <option value="ZP91719">ZP91719 - นาย พี พิว ออง</option>
+                                        <option value="ZP91720">ZP91720 - นาง จูจู ซาน</option>
+                                        <option value="ZP9174">ZP9174 - นาง รัดดา ศรีทอง</option>
+                                        <option value="ZP91922">ZP91922 - นาย เพีย โซ อู</option>
+                                        <option value="ZP92107">ZP92107 - จี ปิยประภากุล</option>
+                                        <option value="ZP92186">ZP92186 - นาย ซามินอู</option>
+                                        <option value="ZP92187">ZP92187 - นางสาว ตินโมแท็ด</option>
+                                        <option value="ZP92237">ZP92237 - นาย ซอพูยาซา</option>
+                                        <option value="ZP92250">ZP92250 - นางสาว ยุน วาติ</option>
+                                        <option value="ZP92282">ZP92282 - นาย ปา ลา มอน</option>
+                                        <option value="ZP92285">ZP92285 - นายตาน ซิน ออง</option>
+                                        <option value="ZP92286">ZP92286 - น.ส.ซิก เค่น</option>
+                                        <option value="ZP92317">ZP92317 - นาย ยาน ลิน ออง</option>
+                                        <option value="ZP92318">ZP92318 - น.ส.คินวิน</option>
+                                        <option value="ZP92321">ZP92321 - น.ส.มะ ซู ซู เย</option>
+                                        <option value="ZP92350">ZP92350 - นางสาว ซิน มา ลวิน</option>
+                                        <option value="ZP92402">ZP92402 - นาย ลา วิน</option>
+                                        <option value="ZP92425">ZP92425 - น.ส.วิ</option>
+                                        <option value="ZP92434">ZP92434 - น.ส.ลำใย ใจซื่อ</option>
+                                        <option value="ZP92471">ZP92471 - นางมอว มอว วิน</option>
+                                        <option value="ZP92481">ZP92481 - นางสาว ติ่น ซา</option>
+                                        <option value="ZP92491">ZP92491 - นางมาทา ซิน มน</option>
+                                        <option value="ZP92495">ZP92495 - นางสาว พรสวรรค์</option>
+                                        <option value="ZP9499">ZP9499 - นาง จำรัศ ไทรชมภู</option>
+                                        <option value="custom">🖊️ คีย์ข้อมูลใหม่</option>
+                                    </select>
+                                    <input type="text" name="employeeBCustom" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200 mt-2" placeholder="กรอกชื่อพนักงาน กะ B" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Fabric Size and Lot -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ขนาดหน้าผ้า (รหัส)</label>
+                                <div class="relative">
+                                    <select name="fabricSize" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" onchange="handleFabricSizeChange(this)">
+                                        <option value="">เลือกขนาด</option>
+                                        <option value="2025800">2025800</option>
+                                        <option value="2625850SM">2625850SM</option>
+                                        <option value="2025850">2025850</option>
+                                        <option value="2325650">2325650</option>
+                                        <option value="1921720">1921720</option>
+                                        <option value="2125650">2125650</option>
+                                        <option value="2825850">2825850</option>
+                                        <option value="262575051">262575051</option>
+                                        <option value="2625650">2625650</option>
+                                        <option value="1725800">1725800</option>
+                                        <option value="1425800">1425800</option>
+                                        <option value="custom">🖊️ คีย์ข้อมูลใหม่</option>
+                                    </select>
+                                    <input type="text" name="fabricSizeCustom" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200 mt-2" placeholder="กรอกรหัสขนาดหน้าผ้า" style="display: none;">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ขนาด Lot.No</label>
+                                <input type="text" name="lotNo" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอก Lot.No">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">เลขที่ใบสั่งผลิต</label>
+                                <input type="text" name="orderNo" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกเลขที่ใบสั่ง">
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Production Data -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ยอดทอ กะ A</label>
+                                <input type="number" name="productionA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกยอดทอ">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ยอดทอ กะ B</label>
+                                <input type="number" name="productionB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกยอดทอ">
+                            </div>
+                        </div>
+
+                        <!-- Row 5: Speed -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ความเร็วรอบ กะ A</label>
+                                <input type="number" name="speedA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกความเร็ว">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ความเร็วรอบ กะ B</label>
+                                <input type="number" name="speedB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกความเร็ว">
+                            </div>
+                        </div>
+
+                        <!-- Row 6: Efficiency -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ประสิทธิภาพ (กะ A) %</label>
+                                <input type="number" name="efficiencyA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกประสิทธิภาพ">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-300">ประสิทธิภาพ (กะ B) %</label>
+                                <input type="number" name="efficiencyB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="กรอกประสิทธิภาพ">
+                            </div>
+                        </div>
+
+                        <!-- Row 7: Meter Reading Shift A -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium mb-4 text-gold-accent">เลขมิเตอร์ประจำวัน 08.00-20.00 น. (กะ A)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">เริ่มงาน</label>
+                                    <input type="number" name="meterStartA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="เลขมิเตอร์เริ่มงาน">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">เลิกงาน</label>
+                                    <input type="number" name="meterEndA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="เลขมิเตอร์เลิกงาน">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 8: Meter Reading Shift B -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium mb-4 text-gold-accent">เลขมิเตอร์ประจำวัน 20.00-08.00 น. (กะ B)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">เริ่มงาน</label>
+                                    <input type="number" name="meterStartB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="เลขมิเตอร์เริ่มงาน">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">เลิกงาน</label>
+                                    <input type="number" name="meterEndB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="เลขมิเตอร์เลิกงาน">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 9: Cut Length -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium mb-4 text-gold-accent">ความยาวตัดม้วน (เมตร)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">กะ A</label>
+                                    <input type="number" name="cutLengthA" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="ความยาวตัดม้วน">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">กะ B</label>
+                                    <input type="number" name="cutLengthB" class="w-full bg-dark-primary border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-gold-accent focus:outline-none transition-colors duration-200" placeholder="ความยาวตัดม้วน">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Entry Button -->
+                <div class="text-center mb-6">
+                    <button type="button" id="addEntry" class="bg-gold-accent hover:bg-gray-800 text-black font-semibold py-3 px-8 rounded-lg transition-colors duration-200 shadow-lg">
+                        <span class="mr-2">+</span> เพิ่มชุดข้อมูล
+                    </button>
+                    <p class="text-gray-400 text-sm mt-2">สามารถเพิ่มได้สูงสุด 20 ชุดข้อมูล</p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-12 rounded-lg transition-colors duration-200 shadow-lg text-lg">
+                        บันทึกข้อมูล
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Loading Modal -->
+        <div id="loadingModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+            <div class="bg-dark-secondary rounded-lg p-8 text-center">
+                <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-gold-accent mx-auto mb-4"></div>
+                <p class="text-white text-lg">กำลังบันทึกข้อมูล...</p>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+            <div class="bg-dark-secondary rounded-lg p-8 text-center max-w-md">
+                <div class="text-green-500 text-6xl mb-4">✓</div>
+                <h3 class="text-xl font-semibold text-white mb-2">บันทึกข้อมูลสำเร็จ!</h3>
+                <p class="text-gray-300 mb-6">ข้อมูลได้ถูกส่งไปยัง Google Sheet เรียบร้อยแล้ว</p>
+                <button onclick="closeSuccessModal()" class="bg-red-600 hover:bg-gray-800 text-black px-6 py-2 rounded-lg transition-colors duration-200">
+                    ตกลง
+                </button>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+            <div class="bg-dark-secondary rounded-lg p-8 text-center max-w-md">
+                <div class="text-red-500 text-6xl mb-4">✗</div>
+                <h3 class="text-xl font-semibold text-white mb-2">เกิดข้อผิดพลาด!</h3>
+                <p class="text-gray-300 mb-6" id="errorMessage">ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง</p>
+                <button onclick="closeErrorModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors duration-200">
+                    ตกลง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let entryCount = 1;
+        const maxEntries = 20;
+
+        // Handle fabric size selection
+        function handleFabricSizeChange(selectElement) {
+            const customInput = selectElement.parentNode.querySelector('[name="fabricSizeCustom"]');
+            if (selectElement.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+        }
+
+        // Handle employee A selection
+        function handleEmployeeAChange(selectElement) {
+            const customInput = selectElement.parentNode.querySelector('[name="employeeACustom"]');
+            if (selectElement.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+        }
+
+        // Handle employee B selection
+        function handleEmployeeBChange(selectElement) {
+            const customInput = selectElement.parentNode.querySelector('[name="employeeBCustom"]');
+            if (selectElement.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.focus();
+            } else {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            }
+        }
+
+        // Add new data entry
+        document.getElementById('addEntry').addEventListener('click', function() {
+            if (entryCount >= maxEntries) {
+                alert('สามารถเพิ่มได้สูงสุด 20 ชุดข้อมูล');
+                return;
+            }
+
+            entryCount++;
+            const dataEntries = document.getElementById('dataEntries');
+            const newEntry = document.querySelector('.data-entry').cloneNode(true);
+            
+            // Update entry number
+            newEntry.querySelector('h3').textContent = `ชุดข้อมูลที่ ${entryCount}`;
+            
+            // Clear all input values
+            const inputs = newEntry.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Show remove button
+            newEntry.querySelector('.remove-entry').style.display = 'block';
+            
+            dataEntries.appendChild(newEntry);
+            
+            // Hide add button if max reached
+            if (entryCount >= maxEntries) {
+                document.getElementById('addEntry').style.display = 'none';
+            }
+        });
+
+        // Remove data entry
+        function removeEntry(button) {
+            if (entryCount <= 1) return;
+            
+            button.closest('.data-entry').remove();
+            entryCount--;
+            
+            // Update entry numbers
+            const entries = document.querySelectorAll('.data-entry h3');
+            entries.forEach((entry, index) => {
+                entry.textContent = `ชุดข้อมูลที่ ${index + 1}`;
+            });
+            
+            // Show add button if below max
+            if (entryCount < maxEntries) {
+                document.getElementById('addEntry').style.display = 'block';
+            }
+        }
+
+        // Form submission
+        document.getElementById('productionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading modal
+            document.getElementById('loadingModal').style.display = 'flex';
+            
+            // Collect all data entries
+            const entries = document.querySelectorAll('.data-entry');
+            const allData = [];
+            
+            entries.forEach((entry, index) => {
+                const formData = new FormData();
+                const inputs = entry.querySelectorAll('input, select');
+                
+                // Get fabric size value (either from dropdown or custom input)
+                const fabricSizeSelect = entry.querySelector('[name="fabricSize"]');
+                const fabricSizeCustom = entry.querySelector('[name="fabricSizeCustom"]');
+                const fabricSizeValue = fabricSizeSelect.value === 'custom' ? fabricSizeCustom.value : fabricSizeSelect.value;
+
+                // Get employee A value (either from dropdown or custom input)
+                const employeeASelect = entry.querySelector('[name="employeeA"]');
+                const employeeACustom = entry.querySelector('[name="employeeACustom"]');
+                const employeeAValue = employeeASelect.value === 'custom' ? employeeACustom.value : employeeASelect.value;
+
+                // Get employee B value (either from dropdown or custom input)
+                const employeeBSelect = entry.querySelector('[name="employeeB"]');
+                const employeeBCustom = entry.querySelector('[name="employeeBCustom"]');
+                const employeeBValue = employeeBSelect.value === 'custom' ? employeeBCustom.value : employeeBSelect.value;
+
+                const entryData = {
+                    entryNumber: index + 1,
+                    date: entry.querySelector('[name="date"]').value,
+                    machine: entry.querySelector('[name="machine"]').value,
+                    employeeA: employeeAValue,
+                    employeeB: employeeBValue,
+                    fabricSize: fabricSizeValue,
+                    lotNo: entry.querySelector('[name="lotNo"]').value,
+                    orderNo: entry.querySelector('[name="orderNo"]').value,
+                    productionA: entry.querySelector('[name="productionA"]').value,
+                    productionB: entry.querySelector('[name="productionB"]').value,
+                    speedA: entry.querySelector('[name="speedA"]').value,
+                    speedB: entry.querySelector('[name="speedB"]').value,
+                    efficiencyA: entry.querySelector('[name="efficiencyA"]').value,
+                    efficiencyB: entry.querySelector('[name="efficiencyB"]').value,
+                    meterStartA: entry.querySelector('[name="meterStartA"]').value,
+                    meterEndA: entry.querySelector('[name="meterEndA"]').value,
+                    meterStartB: entry.querySelector('[name="meterStartB"]').value,
+                    meterEndB: entry.querySelector('[name="meterEndB"]').value,
+                    cutLengthA: entry.querySelector('[name="cutLengthA"]').value,
+                    cutLengthB: entry.querySelector('[name="cutLengthB"]').value
+                };
+                
+                allData.push(entryData);
+            });
+            
+            // Send data to Google Apps Script
+            const submitData = {
+                entries: allData,
+                timestamp: new Date().toISOString(),
+                sheetId: '17JNrivNjELdlNsmgDVoC24yDf_kw3O83Uv5zzC4KkeQ',
+                folderId: '1ZPX2JqjXIR_h9pG8VR_QbjWVbW5H71fh'
+            };
+            
+            fetch('https://script.google.com/macros/s/AKfycbz-91_dqZ8BjtjRg_C2Kqhx2scTmt6KfqZ77YSBFSCOrlt6aqeVSub-DVvZQr66aZr9/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submitData)
+            })
+            .then(() => {
+                // Hide loading modal
+                document.getElementById('loadingModal').style.display = 'none';
+                // Show success modal
+                document.getElementById('successModal').style.display = 'flex';
+                // Reset form
+                document.getElementById('productionForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Hide loading modal
+                document.getElementById('loadingModal').style.display = 'none';
+                // Show error modal
+                document.getElementById('errorMessage').textContent = 'เกิดข้อผิดพลาดในการส่งข้อมูล: ' + error.message;
+                document.getElementById('errorModal').style.display = 'flex';
+            });
+        });
+
+        // Modal functions
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        function closeErrorModal() {
+            document.getElementById('errorModal').style.display = 'none';
+        }
+
+        // Set default date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelector('[name="date"]').value = today;
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9649088f93b14f52',t:'MTc1MzQxODk5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
